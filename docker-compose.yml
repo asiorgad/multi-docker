@@ -2,6 +2,9 @@ version: '3'
 services:
     postgres:
         image: 'postgres:latest'
+        environment:
+            - POSTGRES_PASSWORD=postgres_password
+            - POSTGRES_HOST_AUTH_METHOD=trust
     redis:
         image: 'redis:latest'    
     api:
@@ -21,7 +24,7 @@ services:
             - PGPASSWORD=postgres_password
             - PGDATABASE=postgres
             - PGPORT=5432
-            - POSTGRES_PASSWORD=postgres_password
+        
     client:
         stdin_open: true
         build:
